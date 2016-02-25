@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <style>
+      #output{
+          width:120px;
+          height:25px;
+          background-color:#CCC;
+          border:1px solid #999;
+        }
+    </style>
+
+<script>
+function countDown(secs,elem) {
+	var element = document.getElementById(elem);
+	element.innerHTML = ""+secs+" seconds left";
+	if(secs <0.5) {
+		clearTimeout(timer);
+		element.innerHTML = '<h2>GameOver!</h2>';
+		element.innerHTML += '<a href="#">automatic route to game over page</a>';
+	}
+	secs--;
+	var timer = setTimeout('countDown('+secs+',"'+elem+'")',1000);
+}
+</script>
+<div id="status"></div>
+<script>countDown(5,"status");</script>
+
+</head>
+<body>
+  <p id="output"></p>
+  <div id="controls">
+    <button id="addtime" onclick="addtime()">Add</button>
+    <button onclick="reset()">Reset</button>
+  </div>
+</body>
+</html>
